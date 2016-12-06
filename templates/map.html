@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/map.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7XqdOKP649fEBfzaUVpnHcKq3twfNhsM">
+    </script>
+
+
+<script>
+    var myloc = { lat: 40.746989, lng: -74.031586};
+        function initialize() {
+            var mapOptions = {
+                center: myloc,
+                zoom: 11,
+                disableDefaultUI: true
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            mapdraw()
+          }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+<script>
+    function mapdraw(){
+        var bounds = new google.maps.LatLngBounds();
+        var puloc = new google.maps.LatLng({{ order.start.lat }}, {{ order.start.lon }});
+        var doloc = new google.maps.LatLng({{ order.end.lat }}, {{ order.end.lon }});
+        bounds.extend(puloc);
+        bounds.extend(doloc);
+
+
+        var pumark = new google.maps.Marker({
+            position: puloc,
+            map: map,
+            title: "{{ order.start.name }}",
+            icon: '/static/STARTING_PIN.png'
+            });
+        var domark = new google.maps.Marker({
+            position: doloc,
+            map: map,
+            title: "{{ order.end.name }}",
+            icon: '/static/checkered_pin.png'
+            });
+        pumark.setMap(map);
+        domark.setMap(map);
+
+        map.fitBounds(bounds);
+
+    }
+    </script>
+<div class="topbar">
+        <img src="/static/duck.png">
+        <h2>{{ order.item }}</h2>
+        <nav></nav>
+    </div>
+<div id="map-canvas"></div>
+<form action="/{{ user }}/{{ order.id }}" method="post">
+    {% if active %}
+    <input type="text" name="confirm" placeholder="Confirmation Code">
+    <input type="submit" value="Deliver">
+    {% else %}
+    <input type="submit" value="Accept">
+    {% endif %}
+</form>
+
+</body>
+</html>

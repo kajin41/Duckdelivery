@@ -1,0 +1,48 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-color: dimgray;
+    color: white;
+    margin-top: -20px;
+    margin-left: 0;
+    margin-right: 0;
+    height: 100%;
+    width: 100%;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+div.topbar{
+    background-color: #222222;
+    height: 10%;
+    width: 100%;
+    /*! padding: 1%; */
+}
+div.topbar img{
+    filter: invert(100%);
+    height: 100%;
+    width: auto;
+    float: left;
+    margin-left: 1%;
+}
+div.topbar h2{
+    text-align: center;
+}
+div.list{
+    overflow: scroll;
+}
+div.list div.li{
+    height: 20%;
+    border: solid black 1px;
+    font-size: x-large;
+    text-align: center;
+}
+div.list div.li:hover{
+    background-color: #444444;
+}
+p{
+    text-align: center;
+}

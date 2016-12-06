@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Duck Delivery</title>
+    <link href="/static/deliverView.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="topbar">
+        <img src="/static/duck.png">
+        <h2>Duck Delivery</h2>
+        <nav></nav>
+    </div>
+    <div class="list">
+    <p>Current Orders</p>
+        {% for order in mOrders %}
+        <a href="/{{ currentUser.id }}/{{ mOrders[order].id }}">
+            <div class="li" name="{{ mOrders[order].id }}">{{ mOrders[order].start.name }} >> {{ mOrders[order].end.name }}</div>
+        </a>
+        {% endfor %}
+        <hr>
+        <p>New Orders</p>
+        {% for order in newOrders %}
+            <a href="/{{ currentUser.id }}/{{ newOrders[order].id }}">
+            <div class="li" name="{{ newOrders[order].id }}"><p>{{ newOrders[order].start.name }} >> {{ newOrders[order].end.name }}</p>
+            <p>{{ newOrders[order].item }}</p>  <p>Cost:${{ newOrders[order].cost }}  Payment:${{ newOrders[order].fee }}</p>
+            </div>
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>

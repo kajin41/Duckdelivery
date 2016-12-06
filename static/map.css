@@ -1,0 +1,58 @@
+html, body,
+#map-canvas{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: -20;
+}
+#map-canvas{
+height: 100%;
+position: relative;
+overflow-y: hidden;
+background-color: #f1f1f1;
+    min-height: 100%;
+z-index: 0;
+margin-bottom: -70px;
+}
+
+#map-canvas{
+content: "";
+display: block;
+}
+input{
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    background-color: #222222;
+    color: white;
+    font-size: x-large;
+    
+}
+div.topbar{
+    background-color: #222222;
+    height: 7%;
+    width: 100%;
+    position: fixed;
+    /*! padding: 1%; */
+    z-index: 20;
+}
+div.topbar img{
+    filter: invert(100%);
+    height: 100%;
+    width: auto;
+    float: left;
+    margin-left: 1%;
+}
+div.topbar h2{
+    text-align: center;
+    font-size: large
+}
+body{
+    background-color: dimgray;
+    color: white;
+    margin-top: 0px;
+    margin-left: 0;
+    margin-right: 0;
+    height: 100%;
+    width: 100%;
+}
